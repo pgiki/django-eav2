@@ -97,6 +97,9 @@ def rewrite_q_expr(model_cls, expr):
     # Node in a Q-expr can be a Q or an attribute-value tuple (leaf).
     # We are only interested in Qs.
 
+    # TODO: Temporary solution to make it work with Django guardian
+    return expr
+
     if isinstance(expr, Q):
         config_cls = getattr(model_cls, '_eav_config_cls', None)
         gr_name = config_cls.generic_relation_attr
